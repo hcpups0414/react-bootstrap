@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "node-sass": "^4.9.3",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2",
+    "reactstrap": "^6.5.0"
+  },
+  "name": "react-bootstrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
