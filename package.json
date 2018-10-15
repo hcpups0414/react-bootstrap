@@ -7,9 +7,9 @@
     "next": "^7.0.2",
     "node-sass": "^4.9.3",
     "react": "^16.5.2",
-    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "webpack": "^4.20.2"
   },
   "name": "react-bootstrap",
   "version": "1.0.0",
