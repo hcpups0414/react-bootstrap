@@ -1,0 +1,2 @@
+export const GET_ARTICLES = 'GET_ARTICLES'
+export const GET_LAST_ARTICLES = 'GET_LAST_ARTICLES'

@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
-import Layout from '../layouts/Layout'
+import React from 'react'
+import {connect} from 'react-redux'
+import Articles from '../components/article/Article.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../assets/scss/content.scss'
 
-class index extends Component {
-  state = {}
-  render() {
+class Index extends React.Component {
+  
+  render () {
     return (
-      <Layout>
-        <div className='container content'>
-          <p>this is test</p>
-        </div>
-      </Layout>
+      <Articles />
     )
   }
 }
-export default index
+
+export default connect()(Index)
