@@ -1,18 +1,22 @@
-import {GET_ARTICLES, GET_LAST_ARTICLES} from './ArticleActions.js'
+import {
+	GET_ARTICLES_SUCCESS,
+  GET_LAST_ARTICLES_SUCCESS
+} from './constants'
 import articleState from '../../state.js'
 
 export const articleReducer = (state = articleState, action) => {
   switch (action.type) {
-    case GET_ARTICLES:
+    case GET_ARTICLES_SUCCESS:
       return Object.assign({}, state, { 
-        articles: ['test1','test2', 'test3'],
+        articles: [...action.payload],
         lastArticles: []
       })
-    case GET_LAST_ARTICLES:
+    case GET_LAST_ARTICLES_SUCCESS:
       return Object.assign({}, state, {
-        articles: ['test1','test2'],
-        lastArticles: []
+        articles: [],
+        lastArticles: [...action.payload]
       })
+    
     default: return state
   }
 }

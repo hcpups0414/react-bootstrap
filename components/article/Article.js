@@ -1,21 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Layout from '../../layouts/Layout'
-import { GET_ARTICLES } from './ArticleActions.js'
+import { getArticles } from './ArticleActions.js'
 class Article extends React.Component {
 
-  // static getInitialProps ({ reduxStore, req }) {
-  //   const isServer = !!req
-  //   reduxStore.dispatch({type: GET_ARTICLES})
-  //   return {}
-  // }
-
+  constructor(props){
+    super(props);
+  }
   componentDidMount () {
     console.log(this.props)
-    const {dispatch} = this.props
-    dispatch({type: GET_ARTICLES})
+    this.props.onSubmitBoard('sex')
   }
-
   render() { 
     return ( 
       <Layout>
@@ -25,9 +20,16 @@ class Article extends React.Component {
   }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   const { articles, lastArticles } = state
   return { articles, lastArticles }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmitBoard: (board = 'all') => {
+      dispatch(getArticles(board))
+    }
+  }
+}
 
-export default connect(mapStateToProps)(Article);
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
