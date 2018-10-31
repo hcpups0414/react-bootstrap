@@ -1,4 +1,6 @@
 export default  {
-  articles: [],
-  lastArticles: []
+  articleReducer: {
+    articles: [],
+    lastArticles: []
+  }
 }

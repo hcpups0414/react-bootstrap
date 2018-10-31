@@ -1,6 +1,6 @@
 import { GET_ARTICLES_SUCCESS, GET_ARTICLES_FAIL, GET_ARTICLES_INITIATE} from './constants.js'
 
-export function getArticlesSuccess(){
+export function getArticlesInitiate(){
   return {
       type: GET_ARTICLES_INITIATE,
       payload: 'start'
@@ -20,8 +20,8 @@ export function getArticlesFail(err){
 }
 export const getArticles = (board) => (dispatch) => {
   //console.log(GET_ARTICLES_SUCCESS);
-  dispatch(getArticlesInitiate);
-  fetch(`http://localhost:3000/api/articles/${board}`)
+  dispatch(getArticlesInitiate());
+  fetch(`http://localhost:3000/api/articles/${board}/300`)
     .then((res) => { return res.json(); })
     .then((json) => {
         dispatch(getArticlesSuccess(json));

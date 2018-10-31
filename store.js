@@ -8,5 +8,5 @@ import articleState from './state.js'
 export function initializeStore (initialState = articleState) {
   return createStore(combineReducers({
     articleReducer
-  }), composeWithDevTools(applyMiddleware(thunkMiddleware)))
+  }), initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }

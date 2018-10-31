@@ -1,35 +1,21 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Layout from '../../layouts/Layout'
-import { getArticles } from './ArticleActions.js'
-class Article extends React.Component {
-
-  constructor(props){
-    super(props);
-  }
-  componentDidMount () {
-    console.log(this.props)
-    this.props.onSubmitBoard('sex')
-  }
-  render() { 
-    return ( 
-      <Layout>
-        <p>hi</p>
-      </Layout>
-    );
-  }
+import React from 'react';
+const style = {
+  width: '100%'
 }
 
-const mapStateToProps = (state) => {
-  const { articles, lastArticles } = state
-  return { articles, lastArticles }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSubmitBoard: (board = 'all') => {
-      dispatch(getArticles(board))
+const Article = (props) => (
+  <div key={props.article.index} style={style}>
+    <h1>{props.article.title}</h1>
+    {
+      props.article.images.map((image)=>{
+        if(image.includes('imgur')){
+          return (
+            <img src={image} alt="" style={style}/>
+          )
+        }
+      })
     }
-  }
-}
+  </div>
+)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Article);
+export default Article
