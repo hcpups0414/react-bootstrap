@@ -18,10 +18,10 @@ export function getArticlesFail(err){
       payload: err
   };
 }
-export const getArticles = (board) => (dispatch) => {
+export const getArticles = (board, page) => (dispatch) => {
   //console.log(GET_ARTICLES_SUCCESS);
   dispatch(getArticlesInitiate());
-  fetch(`http://localhost:3000/api/articles/${board}/300`)
+  fetch(`http://localhost:3000/api/articles/${board}/${page}`)
     .then((res) => { return res.json(); })
     .then((json) => {
         dispatch(getArticlesSuccess(json));

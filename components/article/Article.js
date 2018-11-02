@@ -1,16 +1,14 @@
 import React from 'react';
-const style = {
-  width: '100%'
-}
+import '../../assets/scss/article.scss'
 
 const Article = (props) => (
-  <div key={props.article.index} style={style}>
+  <div className='article' key={props.article.index}>
     <h1>{props.article.title}</h1>
     {
-      props.article.images.map((image)=>{
+      props.article.images.map((image, index)=>{
         if(image.includes('imgur')){
           return (
-            <img src={image} alt="" style={style}/>
+            <img src={image} alt="" key={index}/>
           )
         }
       })

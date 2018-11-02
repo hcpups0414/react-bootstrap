@@ -10,7 +10,7 @@ class ArticleList extends React.Component {
   }
   componentDidMount () {
     
-    this.props.onSubmitBoard()
+    this.props.onSubmitBoard('sex')
     console.log('mounted' + this.props)
     //this.props
   }
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmitBoard: (board = 'all') => {
+    onSubmitBoard: (board = 'all', page = 1) => {
       dispatch(getArticles(board))
     }
   }
