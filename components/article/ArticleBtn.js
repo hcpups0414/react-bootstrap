@@ -1,9 +1,11 @@
-// import React from 'react';
-// class  extends Component {
-//   state = {  }
-//   render() { 
-//     return (  );
-//   }
-// }
+import React from 'react';
+class ArticleBtn extends Component {
+  componentDidMount() {
+    
+  }
+  render() { 
+    return (  );
+  }
+}
  
-// export default ;
+export default ArticleBtn;
