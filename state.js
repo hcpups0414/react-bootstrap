@@ -1,6 +1,9 @@
 export default  {
   articleReducer: {
+    boardList: '',
+    currentBoard: '',
     articles: [],
-    lastArticles: []
+    lastArticles: [],
+    currentPage: 0,
   }
 }
