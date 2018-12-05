@@ -11,6 +11,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import BoardList from '../../board/BoardList.js'
 
 export default class Header extends React.Component {
   constructor(props) {
