@@ -1,3 +1,13 @@
+.article-list{
+  text-align: center;
+  margin: 30px 0px;
+  button, p{
+    display: inline-block;
+  }
+  .page{
+    margin: 0px 20px; 
+  }
+}
 .article{
   margin: 0 auto;
   width: 800px;

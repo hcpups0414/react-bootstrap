@@ -1,5 +1,6 @@
 import {
   GET_BOARD_LIST_SUCCESS,
+  SET_CURRENT_BOARD
 } from './constants.js'
 
 export function getBoardListSuccess(boardList) {
@@ -19,4 +20,10 @@ export const getBoardList = () => (dispatch) => {
     .catch((err) => {
       return Promise.reject(err)
     })
+}
+export function setCurrentBoard(board){
+  return {
+    type: SET_CURRENT_BOARD,
+    payload: board
+  }
 }

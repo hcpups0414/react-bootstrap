@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import Layout from '../../layouts/Layout'
 import Article from './Article.js'
 import ArticleBtn from './ArticleBtn.js'
-import BoardList from '../board/BoardList.js'
-import { getBoardList, getArticles, getLastPage } from './ArticleActions.js'
+
+import { getArticles, getLastPage } from './ArticleActions.js'
 
 class ArticleList extends React.Component {
   constructor(props){
@@ -22,12 +22,12 @@ class ArticleList extends React.Component {
       <Layout>
         <ArticleBtn 
           page={this.props.articleReducer.page}
-          prevPage={this.props.prevPage}
-          nextPage={this.props.nextPage}>
+          prevPage={this.props.prevPage.bind(this, this.props.articleReducer.page, this.props.boardReducer.currentBoard)}
+          nextPage={this.props.nextPage.bind(this, this.props.articleReducer.page, this.props.boardReducer.currentBoard)}>
         </ArticleBtn>  
         {
           this.props.articleReducer.articles.map((article,index) => {
-            return <Article index={index} article={article}></Article>
+            return <Article key={index} index={index} article={article} ></Article>
           })
         }
       </Layout>
@@ -36,8 +36,9 @@ class ArticleList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { articleReducer } = state
-  return { articleReducer }
+  console.log('article', state)
+  const { articleReducer, boardReducer } = state
+  return { articleReducer, boardReducer }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {

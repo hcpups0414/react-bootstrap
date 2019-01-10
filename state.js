@@ -5,7 +5,12 @@ export default  {
     currentPage: 0,
   },
   boardReducer: {
-    boardList: '',
-    currentBoard: '',
+    boardList: [
+      'sex',
+      'Boy-Girl',
+      'WomenTalk',
+      'Beauty'
+    ],
+    currentBoard: 'sex',
   }
 }
