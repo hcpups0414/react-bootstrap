@@ -10,8 +10,6 @@ function localLog(msg){
 class BoardList extends React.Component {
   constructor(props) {
     super(props);
-    localLog(props)
-    this.state = {  }
   }
   
   render() { 
@@ -35,11 +33,9 @@ const mapStateToProps = (state) => {
   return { boardReducer }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  localLog('board', ownProps);
+const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentBoard: (board) => {
-      console.log('board', board)
       dispatch(setCurrentBoard(board))
     }
   }

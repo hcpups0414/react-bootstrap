@@ -1,15 +1,14 @@
 import {
   GET_ARTICLES_SUCCESS,
   GET_LAST_PAGE_SUCCESS,
+  SET_CURRENT_PAGE,
+  SET_LAST_PAGE,
 } from './constants.js'
 
-export function getArticlesSuccess(articles, page) {
+export function getArticlesSuccess(articles) {
   return {
     type: GET_ARTICLES_SUCCESS,
-    payload: {
-      articles,
-      page
-    }
+    payload: articles
   }
 }
 export function getLastPageSuccess(lastPage) {
@@ -21,8 +20,14 @@ export function getLastPageSuccess(lastPage) {
 }
 export function setCurrentPage(currentPage) {
   return {
-    type: GET_CURRENT_PAGE,
+    type: SET_CURRENT_PAGE,
     payload: currentPage
+  }
+}
+export function setLastPage(lastPage) {
+  return {
+    type: SET_LAST_PAGE,
+    payload: lastPage
   }
 }
 
@@ -32,21 +37,22 @@ export const getArticles = (board, page) => (dispatch) => {
       return res.json()
     })
     .then((json) => {
-      dispatch(getArticlesSuccess(json, page))
+      dispatch(getArticlesSuccess(json))
+      dispatch(setCurrentPage(page))
     })
     .catch((err) => {
       console.log(err)
     })
 }
-export const getLastPage = (board) => {
+export const getLastPage = (board, callback) => dispatch => {
   return fetch(`http://localhost:3000/api/${board}/pages`)
     .then((res) => {
       return res.json()
     })
     .then((page) => {
-      return Promise.resolve(page)
+      callback(page)
     })
     .catch((err) => {
-      return Promise.reject(err)
+      console.log(err)
     })
 }

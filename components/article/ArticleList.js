@@ -4,29 +4,28 @@ import Layout from '../../layouts/Layout'
 import Article from './Article.js'
 import ArticleBtn from './ArticleBtn.js'
 
-import { getArticles, getLastPage } from './ArticleActions.js'
+import { getArticles, getLastPage, setLastPage } from './ArticleActions.js'
 
 class ArticleList extends React.Component {
   constructor(props){
     super(props)
   }
   componentDidMount () {
-    this.props.getArticles('sex')
-    
-    console.log('mounted', this.props)
-    //this.props
+    this.props.initArticles(this.props.boardInfo.currentBoard)
+    // console.log('mounted', this.props)
+  }
+  componentDidUpdate (prevProps) {
+    if(this.props.boardInfo.currentBoard !== prevProps.boardInfo.currentBoard){
+      this.props.initArticles(this.props.boardInfo.currentBoard)
+    }
   }
   render() { 
-    console.log('page props', this.props)
+    // console.log('page props', this.props)
     return ( 
       <Layout>
-        <ArticleBtn 
-          page={this.props.articleReducer.page}
-          prevPage={this.props.prevPage.bind(this, this.props.articleReducer.page, this.props.boardReducer.currentBoard)}
-          nextPage={this.props.nextPage.bind(this, this.props.articleReducer.page, this.props.boardReducer.currentBoard)}>
-        </ArticleBtn>  
+        <ArticleBtn></ArticleBtn>  
         {
-          this.props.articleReducer.articles.map((article,index) => {
+          this.props.articleInfo.articles.map((article,index) => {
             return <Article key={index} index={index} article={article} ></Article>
           })
         }
@@ -36,38 +35,23 @@ class ArticleList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('article', state)
+  // console.log('article', state)
   const { articleReducer, boardReducer } = state
-  return { articleReducer, boardReducer }
+  return { 
+    articleInfo: articleReducer, 
+    boardInfo: boardReducer }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getBoardList: () => {
       dispatch(getBoardList())
     },
-    getArticles: (board = 'all') => {
-      getLastPage(board)
-        .then( page => {
-          console.log(page)
-          dispatch(getArticles(board, page))
-        })
-        .catch( err => {
-          console.error(err)
-          dispatch(getArticles(board, 1))
-          dispatch(getLastPageFail(err))
-        })
+    initArticles: (board = 'all') => {
+      dispatch(getLastPage(board, function(page){
+        dispatch(setLastPage(page))
+        dispatch(getArticles(board, page))
+      }))
     },
-    nextPage: (currentPage) => {
-      console.log(currentPage)
-      let board = 'all'
-      let page = currentPage + 1 >= ownProps ?  ownProps.page : 0
-      dispatch(getArticles(board, page))
-    },
-    prevPage: (currentPage, board = 'all') => {
-      console.log(currentPage)
-      let page = currentPage - 1 >= 0 ? currentPage - 1 : 0
-      dispatch(getArticles(board, page))
-    }
   }
 }
 
