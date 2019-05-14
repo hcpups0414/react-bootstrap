@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../assets/scss/article.scss'
+import React from 'react'
+import '../../../assets/scss/article.scss'
 
 const Article = (props) => (
   <div className='article' key={props.article.index}>

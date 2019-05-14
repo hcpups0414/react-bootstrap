@@ -1,31 +1,33 @@
-import {
-	GET_ARTICLES_SUCCESS,
-  GET_LAST_ARTICLES_SUCCESS,
-  SET_CURRENT_PAGE,
-  SET_LAST_PAGE,
-  GET_BOARD_LIST_SUCCESS,
-} from './constants'
-import articleState from '../../state.js'
+import ArticleActionType from './ArticleActionType'
 
+export const articleState = {
+  articleReducer: {
+    articles: [],
+    lastArticles: [],
+    currentPage: 0,
+    lastPage: 0,
+    err: '',
+  },
+}
 export const articleReducer = (state = articleState, action) => {
   switch (action.type) {
-    case GET_ARTICLES_SUCCESS:
+    case ArticleActionType.GET_ARTICLES_SUCCESS:
       return Object.assign({}, state, { 
         articles: [...action.payload],
       })
-    case GET_LAST_ARTICLES_SUCCESS:
+    case ArticleActionType.GET_LAST_ARTICLES_SUCCESS:
       return Object.assign({}, state, {
         lastArticles: [...action.payload],
       })
-    case SET_CURRENT_PAGE:
+    case ArticleActionType.SET_CURRENT_PAGE:
       return Object.assign({}, state, {
         currentPage: action.payload,
       })
-    case SET_LAST_PAGE:
+    case ArticleActionType.GET_LAST_PAGE_SUCCESS:
       return Object.assign({}, state, {
         lastPage: action.payload,
       })
-    case GET_BOARD_LIST_SUCCESS:
+    case ArticleActionType.GET_BOARD_LIST_SUCCESS:
       return Object.assign({}, state, {
         boardList: action.payload,
       })

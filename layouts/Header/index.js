@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   Nav,
   } from 'reactstrap';
-import BoardList from '../../components/board/BoardList.js'
+import BoardContainer from '../../components/board/BoardContainer.js'
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class Header extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <BoardList/>
+              <BoardContainer/>
             </Nav>
           </Collapse>
         </Navbar>

@@ -4,10 +4,7 @@ import {
   NavItem,
 } from 'reactstrap'
 import { setCurrentBoard } from './boardAction'
-function localLog(msg){
-  console.log('board', msg)
-}
-class BoardList extends React.Component {
+class BoardContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -40,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BoardList);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);

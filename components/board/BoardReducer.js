@@ -1,17 +1,13 @@
-import {
-  GET_BOARD_LIST_SUCCESS,
-  SET_CURRENT_BOARD
-} from './constants'
+import BoardActionType from './BoardActionType'
 import boardState from '../../state.js'
 
 export const boardReducer = (state = boardState, action) => {
-  console.log('reducer', state)
   switch (action.type) {
-    case GET_BOARD_LIST_SUCCESS:
+    case BoardActionType.GET_BOARD_LIST_SUCCESS:
       return Object.assign({}, state, {
         boardList: action.payload,
       })
-    case SET_CURRENT_BOARD: 
+    case BoardActionType.SET_CURRENT_BOARD: 
       return Object.assign({}, state, {
         currentBoard: action.payload,
       })

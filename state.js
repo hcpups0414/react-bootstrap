@@ -3,7 +3,8 @@ export default  {
     articles: [],
     lastArticles: [],
     currentPage: 0,
-    lastPage: {},
+    lastPage: 0,
+    err: '',
   },
   boardReducer: {
     boardList: [

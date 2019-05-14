@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import "isomorphic-fetch"
-import { getArticles, getLastPage, setLastPage } from './ArticleActions.js'
+import { getArticles, getLastPage, setLastPage } from '../ArticleActions.js'
 
 class ArticleBtn extends React.Component{
   constructor(props){

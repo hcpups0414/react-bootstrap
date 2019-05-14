@@ -1,14 +1,19 @@
-import {
-  GET_BOARD_LIST_SUCCESS,
-  SET_CURRENT_BOARD
-} from './constants.js'
+import BoardActionType from './BoardActionType'
 
 export function getBoardListSuccess(boardList) {
   return {
-    type: GET_BOARD_LIST_SUCCESS,
+    type: BoardActionType.GET_BOARD_LIST_SUCCESS,
     payload: boardList
   }
 }
+
+export function setCurrentBoard(board){
+  return {
+    type: BoardActionType.SET_CURRENT_BOARD,
+    payload: board
+  }
+}
+
 export const getBoardList = () => (dispatch) => {
   fetch(`http://localhost:3000/api/boards`)
     .then((res) => {
@@ -20,10 +25,4 @@ export const getBoardList = () => (dispatch) => {
     .catch((err) => {
       return Promise.reject(err)
     })
-}
-export function setCurrentBoard(board){
-  return {
-    type: SET_CURRENT_BOARD,
-    payload: board
-  }
 }
